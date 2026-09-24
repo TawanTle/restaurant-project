@@ -1,4 +1,5 @@
 # โปรเจกต์ฐานข้อมูลร้านอาหารตามสั่ง
+
 ## 1. Business rules
 
 1. ร้านบันทึกพนักงานและบทบาท พนักงานหนึ่งคนรับออเดอร์ได้หลายใบ แต่ออเดอร์แต่ละใบมีพนักงานผู้รับหนึ่งคน
@@ -69,12 +70,44 @@ erDiagram
     CATEGORIES ||--o{ MENU_ITEMS : groups
     ORDERS ||--|{ ORDER_ITEMS : contains
     MENU_ITEMS ||--o{ ORDER_ITEMS : ordered_as
-    CUSTOMERS { int customer_id PK; string customer_name; string phone UK }
-    EMPLOYEES { int employee_id PK; string employee_name; string role }
-    CATEGORIES { int category_id PK; string category_name UK }
-    MENU_ITEMS { int menu_id PK; int category_id FK; string menu_name UK; decimal price; boolean is_available }
-    ORDERS { int order_id PK; int customer_id FK; int employee_id FK; datetime ordered_at; string order_type; string status; string note }
-    ORDER_ITEMS { int order_item_id PK; int order_id FK; int menu_id FK; int quantity; decimal unit_price; string item_note }
+    CUSTOMERS {
+        int customer_id PK
+        string customer_name
+        string phone UK
+    }
+    EMPLOYEES {
+        int employee_id PK
+        string employee_name
+        string role
+    }
+    CATEGORIES {
+        int category_id PK
+        string category_name UK
+    }
+    MENU_ITEMS {
+        int menu_id PK
+        int category_id FK
+        string menu_name UK
+        decimal price
+        boolean is_available
+    }
+    ORDERS {
+        int order_id PK
+        int customer_id FK
+        int employee_id FK
+        datetime ordered_at
+        string order_type
+        string status
+        string note
+    }
+    ORDER_ITEMS {
+        int order_item_id PK
+        int order_id FK
+        int menu_id FK
+        int quantity
+        decimal unit_price
+        string item_note
+    }
 ```
 
 ## 8. คำสั่ง SQL
